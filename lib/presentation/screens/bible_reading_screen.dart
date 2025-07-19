@@ -44,21 +44,23 @@ class BibleReadingScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: Text(
+                          child: Text(
                               '${left.verse}. ${left.text}',
                               style: TextStyle(
                                 fontSize: provider.fontSize,
-                                color: CupertinoColors.label,
+                                color: CupertinoDynamicColor.resolve(
+                                    CupertinoColors.label, context),
                               ),
                             ),
                           ),
                           Container(width: 1, color: CupertinoColors.separator),
                           Expanded(
-                            child: Text(
+                          child: Text(
                               '${right.verse}. ${right.text}',
                               style: TextStyle(
                                 fontSize: provider.fontSize,
-                                color: CupertinoColors.label,
+                                color: CupertinoDynamicColor.resolve(
+                                    CupertinoColors.label, context),
                               ),
                             ),
                           ),
@@ -74,7 +76,8 @@ class BibleReadingScreen extends StatelessWidget {
                       '${v.verse}. ${v.text}',
                       style: TextStyle(
                         fontSize: provider.fontSize,
-                        color: CupertinoColors.label,
+                        color: CupertinoDynamicColor.resolve(
+                            CupertinoColors.label, context),
                       ),
                     ),
                   );

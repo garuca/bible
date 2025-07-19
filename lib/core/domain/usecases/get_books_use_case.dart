@@ -1,6 +1,6 @@
-import '../entities/book.dart';
-import '../entities/version.dart';
-import '../repositories/bible_repository.dart';
+import 'package:bible/core/domain/entities/book.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/domain/repositories/bible_repository.dart';
 
 class GetBooksUseCase {
   final BibleRepository repository;

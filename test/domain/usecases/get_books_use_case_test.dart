@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:bible/domain/entities/book.dart';
-import 'package:bible/domain/entities/version.dart';
-import 'package:bible/domain/repositories/bible_repository.dart';
-import 'package:bible/domain/usecases/get_books_use_case.dart';
-import 'package:bible/domain/entities/verse.dart';
+import 'package:bible/core/domain/entities/book.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/domain/repositories/bible_repository.dart';
+import 'package:bible/core/domain/usecases/get_books_use_case.dart';
+import 'package:bible/core/domain/entities/verse.dart';
 
 class FakeBibleRepository implements BibleRepository {
   @override

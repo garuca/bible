@@ -1,4 +1,4 @@
-import '../../domain/entities/book.dart';
+import 'package:bible/core/domain/entities/book.dart';
 
 class BookModel {
   final int id;

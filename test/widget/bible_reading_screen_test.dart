@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bible/domain/entities/verse.dart';
-import 'package:bible/domain/entities/version.dart';
-import 'package:bible/domain/repositories/bible_repository.dart';
-import 'package:bible/domain/usecases/get_verses_use_case.dart';
-import 'package:bible/domain/usecases/compare_verses_use_case.dart';
-import 'package:bible/domain/entities/book.dart';
-import 'package:bible/presentation/providers/bible_reading_provider.dart';
-import 'package:bible/presentation/screens/bible_reading_screen.dart';
+import 'package:bible/core/domain/entities/verse.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/domain/repositories/bible_repository.dart';
+import 'package:bible/core/domain/usecases/get_verses_use_case.dart';
+import 'package:bible/core/domain/usecases/compare_verses_use_case.dart';
+import 'package:bible/core/domain/entities/book.dart';
+import 'package:bible/features/bible_reading/presentation/bible_reading_provider.dart';
+import 'package:bible/features/bible_reading/presentation/bible_reading_screen.dart';
 
 class FakeRepo implements BibleRepository {
   @override

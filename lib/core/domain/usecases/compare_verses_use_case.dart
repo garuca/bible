@@ -1,6 +1,6 @@
-import '../entities/verse.dart';
-import '../entities/version.dart';
-import '../repositories/bible_repository.dart';
+import 'package:bible/core/domain/entities/verse.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/domain/repositories/bible_repository.dart';
 
 class CompareVersesUseCase {
   final BibleRepository repository;

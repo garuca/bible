@@ -1,4 +1,4 @@
-import '../../domain/entities/verse.dart';
+import 'package:bible/core/domain/entities/verse.dart';
 
 class VerseModel {
   final int bookId;

@@ -1,9 +1,10 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import '../../domain/entities/book.dart';
-import '../../domain/entities/version.dart';
-import '../providers/bible_reading_provider.dart';
+import 'package:bible/core/domain/entities/book.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/features/bible_reading/presentation/bible_reading_provider.dart';
 
 class BibleReadingScreen extends StatelessWidget {
   final Book book;

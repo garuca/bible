@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import '../../domain/entities/version.dart';
-import '../providers/book_selection_provider.dart';
-import '../providers/bible_reading_provider.dart';
-import '../providers/theme_provider.dart';
-import 'bible_reading_screen.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/presentation/providers/theme_provider.dart';
+import 'package:bible/features/book_selection/presentation/book_selection_provider.dart';
+import 'package:bible/features/bible_reading/presentation/bible_reading_provider.dart';
+import 'package:bible/features/bible_reading/presentation/bible_reading_screen.dart';
 
 class BookSelectionScreen extends StatelessWidget {
   const BookSelectionScreen({Key? key}) : super(key: key);

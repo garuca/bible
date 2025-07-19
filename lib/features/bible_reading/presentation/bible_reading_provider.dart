@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../domain/entities/verse.dart';
-import '../../domain/entities/version.dart';
-import '../../domain/usecases/get_verses_use_case.dart';
-import '../../domain/usecases/compare_verses_use_case.dart';
+import 'package:bible/core/domain/entities/verse.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/domain/usecases/get_verses_use_case.dart';
+import 'package:bible/core/domain/usecases/compare_verses_use_case.dart';
 
 class BibleReadingProvider extends ChangeNotifier {
   final GetVersesUseCase getVersesUseCase;

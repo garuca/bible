@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import 'domain/usecases/get_books_use_case.dart';
-import 'domain/usecases/get_verses_use_case.dart';
-import 'domain/usecases/compare_verses_use_case.dart';
-import 'presentation/providers/book_selection_provider.dart';
-import 'presentation/providers/bible_reading_provider.dart';
-import 'presentation/providers/theme_provider.dart';
-import 'presentation/screens/book_selection_screen.dart';
+import 'package:bible/core/domain/usecases/get_books_use_case.dart';
+import 'package:bible/core/domain/usecases/get_verses_use_case.dart';
+import 'package:bible/core/domain/usecases/compare_verses_use_case.dart';
+import 'package:bible/core/presentation/providers/theme_provider.dart';
+import 'package:bible/features/book_selection/presentation/book_selection_provider.dart';
+import 'package:bible/features/bible_reading/presentation/bible_reading_provider.dart';
+import 'package:bible/features/book_selection/presentation/book_selection_screen.dart';
 
 class MyApp extends StatelessWidget {
   final GetBooksUseCase getBooksUseCase;

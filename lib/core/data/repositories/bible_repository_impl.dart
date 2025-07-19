@@ -1,8 +1,8 @@
-import '../../domain/entities/book.dart';
-import '../../domain/entities/verse.dart';
-import '../../domain/entities/version.dart';
-import '../../domain/repositories/bible_repository.dart';
-import '../datasources/bible_local_data_source.dart';
+import 'package:bible/core/domain/entities/book.dart';
+import 'package:bible/core/domain/entities/verse.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/domain/repositories/bible_repository.dart';
+import 'package:bible/core/data/datasources/bible_local_data_source.dart';
 
 class BibleRepositoryImpl implements BibleRepository {
   final BibleLocalDataSource localDataSource;

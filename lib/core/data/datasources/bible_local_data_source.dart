@@ -1,11 +1,11 @@
 import 'package:sqflite/sqflite.dart';
 
-import '../../domain/entities/book.dart';
-import '../../domain/entities/verse.dart';
-import '../../domain/entities/version.dart';
-import 'database_provider.dart';
-import '../models/book_model.dart';
-import '../models/verse_model.dart';
+import 'package:bible/core/domain/entities/book.dart';
+import 'package:bible/core/domain/entities/verse.dart';
+import 'package:bible/core/domain/entities/version.dart';
+import 'package:bible/core/data/datasources/database_provider.dart';
+import 'package:bible/core/data/models/book_model.dart';
+import 'package:bible/core/data/models/verse_model.dart';
 
 class BibleLocalDataSource {
   final DatabaseProvider provider;

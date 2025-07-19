@@ -46,14 +46,20 @@ class BibleReadingScreen extends StatelessWidget {
                           Expanded(
                             child: Text(
                               '${left.verse}. ${left.text}',
-                              style: TextStyle(fontSize: provider.fontSize),
+                              style: TextStyle(
+                                fontSize: provider.fontSize,
+                                color: CupertinoColors.label,
+                              ),
                             ),
                           ),
                           Container(width: 1, color: CupertinoColors.separator),
                           Expanded(
                             child: Text(
                               '${right.verse}. ${right.text}',
-                              style: TextStyle(fontSize: provider.fontSize),
+                              style: TextStyle(
+                                fontSize: provider.fontSize,
+                                color: CupertinoColors.label,
+                              ),
                             ),
                           ),
                         ],
@@ -66,7 +72,10 @@ class BibleReadingScreen extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     child: Text(
                       '${v.verse}. ${v.text}',
-                      style: TextStyle(fontSize: provider.fontSize),
+                      style: TextStyle(
+                        fontSize: provider.fontSize,
+                        color: CupertinoColors.label,
+                      ),
                     ),
                   );
                 },

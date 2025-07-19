@@ -11,6 +11,7 @@ import 'package:bible/domain/entities/verse.dart';
 import 'package:bible/domain/usecases/compare_verses_use_case.dart';
 import 'package:bible/presentation/providers/book_selection_provider.dart';
 import 'package:bible/presentation/providers/bible_reading_provider.dart';
+import 'package:bible/presentation/providers/theme_provider.dart';
 import 'package:bible/presentation/screens/book_selection_screen.dart';
 
 class FakeRepo implements BibleRepository {
@@ -40,6 +41,7 @@ void main() {
       CupertinoApp(
         home: MultiProvider(
           providers: [
+            ChangeNotifierProvider(create: (_) => ThemeProvider()),
             ChangeNotifierProvider(
                 create: (_) => BookSelectionProvider(getBooks)),
             ChangeNotifierProvider(

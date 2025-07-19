@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../domain/entities/version.dart';
 import '../providers/book_selection_provider.dart';
 import '../providers/bible_reading_provider.dart';
+import '../providers/theme_provider.dart';
 import 'bible_reading_screen.dart';
 
 class BookSelectionScreen extends StatelessWidget {
@@ -22,6 +23,19 @@ class BookSelectionScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Dark Mode'),
+                  CupertinoSwitch(
+                    value: context.watch<ThemeProvider>().isDark,
+                    onChanged: (_) => context.read<ThemeProvider>().toggle(),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: CupertinoPicker(
                 itemExtent: 32,

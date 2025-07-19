@@ -6,6 +6,7 @@ import 'domain/usecases/get_verses_use_case.dart';
 import 'domain/usecases/compare_verses_use_case.dart';
 import 'presentation/providers/book_selection_provider.dart';
 import 'presentation/providers/bible_reading_provider.dart';
+import 'presentation/providers/theme_provider.dart';
 import 'presentation/screens/book_selection_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(
           create: (_) => BookSelectionProvider(getBooksUseCase),
         ),
@@ -34,17 +36,21 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ],
-      child: CupertinoApp(
-        title: 'Bible App',
-        debugShowCheckedModeBanner: false,
-        builder: (context, child) {
-          final brightness = MediaQuery.platformBrightnessOf(context);
-          return CupertinoTheme(
-            data: CupertinoThemeData(brightness: brightness),
-            child: child!,
-          );
-        },
-        home: const BookSelectionScreen(),
+      child: Consumer<ThemeProvider>(
+        builder: (context, theme, child) => CupertinoApp(
+          title: 'Bible App',
+          debugShowCheckedModeBanner: false,
+          builder: (context, child) {
+            final brightness = theme.isDark
+                ? Brightness.dark
+                : Brightness.light;
+            return CupertinoTheme(
+              data: CupertinoThemeData(brightness: brightness),
+              child: child!,
+            );
+          },
+          home: const BookSelectionScreen(),
+        ),
       ),
     );
   }

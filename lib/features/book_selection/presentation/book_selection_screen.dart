@@ -8,7 +8,7 @@ import 'package:bible/features/bible_reading/presentation/bible_reading_provider
 import 'package:bible/features/bible_reading/presentation/bible_reading_screen.dart';
 
 class BookSelectionScreen extends StatelessWidget {
-  const BookSelectionScreen({Key? key}) : super(key: key);
+  const BookSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

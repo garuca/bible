@@ -11,10 +11,10 @@ class BibleReadingScreen extends StatelessWidget {
   final int chapter;
 
   const BibleReadingScreen({
-    Key? key,
+    super.key,
     required this.book,
     required this.chapter,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

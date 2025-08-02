@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
   final CompareVersesUseCase compareVersesUseCase;
 
   const MyApp({
-    Key? key,
+    super.key,
     required this.getBooksUseCase,
     required this.getVersesUseCase,
     required this.compareVersesUseCase,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

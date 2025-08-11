@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
@@ -20,72 +19,159 @@ class BibleReadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = context.watch<BibleReadingProvider>();
     return CupertinoPageScaffold(
-      child: CustomScrollView(
-        slivers: [
-          CupertinoSliverNavigationBar(
-            largeTitle: Text('${book.name} $chapter'),
-            trailing: CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: const Icon(CupertinoIcons.ellipsis_circle),
-              onPressed: () => _showOptions(context),
+      child: Stack(
+        children: [
+          CustomScrollView(
+            slivers: [
+              CupertinoSliverNavigationBar(
+                largeTitle: Text('${book.name} $chapter'),
+                trailing: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Icon(CupertinoIcons.ellipsis_circle),
+                  onPressed: () => _showOptions(context),
+                ),
+              ),
+              SliverSafeArea(
+                top: false,
+                sliver: SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, i) {
+                      if (provider.isComparing) {
+                        final left = provider.versesLeft[i];
+                        final right = provider.versesRight[i];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 4,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  '${left.verse}. ${left.text}',
+                                  style: TextStyle(
+                                    fontSize: provider.fontSize,
+                                    color: CupertinoDynamicColor.resolve(
+                                      CupertinoColors.label,
+                                      context,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: 1,
+                                color: CupertinoColors.separator,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  '${right.verse}. ${right.text}',
+                                  style: TextStyle(
+                                    fontSize: provider.fontSize,
+                                    color: CupertinoDynamicColor.resolve(
+                                      CupertinoColors.label,
+                                      context,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                      final v = provider.verses[i];
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 4,
+                        ),
+                        child: Text(
+                          '${v.verse}. ${v.text}',
+                          style: TextStyle(
+                            fontSize: provider.fontSize,
+                            color: CupertinoDynamicColor.resolve(
+                              CupertinoColors.label,
+                              context,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    childCount: provider.isComparing
+                        ? provider.versesLeft.length
+                        : provider.verses.length,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            bottom: 24,
+            left: 24,
+            child: Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: CupertinoDynamicColor.resolve(
+                  CupertinoColors.activeBlue,
+                  context,
+                ),
+                shape: BoxShape.circle,
+              ),
+              child: CupertinoButton(
+                padding: EdgeInsets.zero,
+                onPressed: chapter > 1
+                    ? () {
+                        provider.loadVerses(
+                          provider.version,
+                          book.id,
+                          chapter - 1,
+                        );
+                        Navigator.of(context).pushReplacement(
+                          CupertinoPageRoute(
+                            builder: (_) => BibleReadingScreen(
+                              book: book,
+                              chapter: chapter - 1,
+                            ),
+                          ),
+                        );
+                      }
+                    : null,
+                child: const Icon(
+                  CupertinoIcons.chevron_left,
+                  color: CupertinoColors.white,
+                ),
+              ),
             ),
           ),
-          SliverSafeArea(
-            top: false,
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, i) {
-                  if (provider.isComparing) {
-                    final left = provider.versesLeft[i];
-                    final right = provider.versesRight[i];
-                    return Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                          child: Text(
-                              '${left.verse}. ${left.text}',
-                              style: TextStyle(
-                                fontSize: provider.fontSize,
-                                color: CupertinoDynamicColor.resolve(
-                                    CupertinoColors.label, context),
-                              ),
-                            ),
-                          ),
-                          Container(width: 1, color: CupertinoColors.separator),
-                          Expanded(
-                          child: Text(
-                              '${right.verse}. ${right.text}',
-                              style: TextStyle(
-                                fontSize: provider.fontSize,
-                                color: CupertinoDynamicColor.resolve(
-                                    CupertinoColors.label, context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                  final v = provider.verses[i];
-                  return Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                    child: Text(
-                      '${v.verse}. ${v.text}',
-                      style: TextStyle(
-                        fontSize: provider.fontSize,
-                        color: CupertinoDynamicColor.resolve(
-                            CupertinoColors.label, context),
-                      ),
+          Positioned(
+            bottom: 24,
+            right: 24,
+            child: Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: CupertinoDynamicColor.resolve(
+                  CupertinoColors.activeBlue,
+                  context,
+                ),
+                shape: BoxShape.circle,
+              ),
+              child: CupertinoButton(
+                padding: EdgeInsets.zero,
+                child: const Icon(
+                  CupertinoIcons.chevron_right,
+                  color: CupertinoColors.white,
+                ),
+                onPressed: () {
+                  provider.loadVerses(provider.version, book.id, chapter + 1);
+                  Navigator.of(context).pushReplacement(
+                    CupertinoPageRoute(
+                      builder: (_) =>
+                          BibleReadingScreen(book: book, chapter: chapter + 1),
                     ),
                   );
                 },
-                childCount: provider.isComparing
-                    ? provider.versesLeft.length
-                    : provider.verses.length,
               ),
             ),
           ),
